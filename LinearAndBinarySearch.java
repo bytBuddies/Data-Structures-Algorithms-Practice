@@ -2,9 +2,11 @@ public class LinearAndBinarySearch {
 
     public static void main(String[] args) {
         int[] array = {4,6,8,11,14,19,21};
-        int target = 19;
+        int target = 21;
         linearSearchAlgo(array, target);
         binarySearchAlgo(array, target);
+
+        recurviceApproch(array, target, 0, array.length-1);
     }
 
     // Linear Search Algorithms timecomplexity O(n)
@@ -37,5 +39,25 @@ public class LinearAndBinarySearch {
         }
         return -1;
     }
+
+    // Recursive Approch 
+    public static int recurviceApproch(int[] array, int target, int start, int end ) {
+        int steps = 0;
+        if(start <= end) {
+            steps++;
+            int mid = (start+end)/2;
+            if(array[mid] == target) {
+                System.out.println("Found Steps Taken by Recursive Approch :: "+steps);
+                return mid;
+            } else if(array[mid] < target) {
+                recurviceApproch(array, target, start+1, end);
+            } else {
+                recurviceApproch(array, target, start, end-1);
+            }
+        }
+        return -1;
+    }
+
+
     
 }
